@@ -14,4 +14,23 @@ public class menu : MonoBehaviour
     {
         SceneManager.LoadScene("creditos");
     }
+
+    public void Fase2()
+    {
+        if(gameObject.CompareTag("Player"))
+        {
+            gameObject.CompareTag("porta1");
+            SceneManager.LoadScene("Fase1");
+        }
+        
+    }
+    
+    public void Fase3()
+    {
+        if(gameObject.CompareTag("Player"))
+        {
+            gameObject.CompareTag("porta2");
+            SceneManager.LoadScene("Fase1");
+        }
+    }
 }
