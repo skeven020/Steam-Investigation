@@ -1,15 +1,24 @@
 using UnityEngine;
+
 public class Player : MonoBehaviour
 {
-    private float moveH;
-    public float moveV;
-    public int velocidade;
+    public float speed = 5f;
+    private Rigidbody2D rb;
+    private Vector2 movement;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody2D>(); 
+    }
+
+    private void Update()
+    {
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+    }
+
     private void FixedUpdate()
     {
-        moveH = Input.GetAxis("Horizontal");
-        moveV = Input.GetAxis("Vertical");
-        transform.position += new Vector3(moveH * velocidade * Time.deltaTime, moveV * velocidade * Time.deltaTime, 0);
+        rb.linearVelocity = movement.normalized * speed;
     }
 }
